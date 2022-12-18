@@ -12,10 +12,10 @@ nav {
   align-items: center;
   justify-content: space-between;
 
-  a img {
-    width: 154px;
-    height: 20px;
-  }
+  // a img {
+  //   width: 154px;
+  //   height: 20px;
+  // }
 }
 
 /* nav_menu */
@@ -154,11 +154,11 @@ nav {
   flex-direction: column;
   text-align: center;
 
-  img {
-    width: 150px;
-    height: 225px;
-    border-radius: 8px;
-  }
+  // img {
+  //   width: 150px;
+  //   height: 225px;
+  //   border-radius: 8px;
+  // }
 
   h4 {
     max-width: 150px;
@@ -215,3 +215,15 @@ nav {
 .drop:hover .drop-content {
   display: block;
 }
+#dropbtn{
+  display: flex;
+
+}
+
+
+.phome{
+  margin-left: 31rem;
+
+}
+
+
