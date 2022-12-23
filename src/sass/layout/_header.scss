@@ -226,4 +226,26 @@ nav {
 
 }
 
+             //HEADER BTN
+ 
+.nav__btn {
+  background-color: aliceblue;
+  color: rgb(201, 172, 140);
+  padding: 0.8rem 2.8rem;
+  border-radius: 1rem;
+  font-size: 1.6rem;
+  font-family: "EB Garamond", serif;
+  font-weight: 600;
+  border: 0.2rem solid rgb(201, 172, 140);
+  cursor: pointer;
+}
+
+.nav__btn:hover {
+  color: rgb(0, 0, 0);
+  background: rgb(201, 172, 140);
+  cursor: pointer;
+}
+.nav__title a:hover {
+  color: aliceblue;
+}
 

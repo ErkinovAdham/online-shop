@@ -14,3 +14,21 @@ export function signUp(quary) {
     role: `user`
    })
 }
+
+export function signIn(quary) {
+    if (!quary) {
+        throw "please";
+        
+    }
+   let url = `auth/sign-in`;
+   return axios.post(url,{
+    email: `${quary.email}`,
+    password: `${quary.password}`,
+   })
+}
+
+export function products() {
+   let url = `products/public`;
+   return axios.get(url)
+}
+
