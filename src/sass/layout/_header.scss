@@ -222,7 +222,7 @@ nav {
 
 
 .phome{
-  margin-left: 31rem;
+  margin-left: 4rem;
 
 }
 
@@ -249,3 +249,34 @@ nav {
   color: aliceblue;
 }
 
+.header__btn {
+  display: flex;
+}
+
+
+@media screen and (max-width: 600px) {
+  .navbar {
+    ul.nav__menu {
+      display: none;
+    }
+    ul.connect {
+      display: none;
+    }
+    
+  }
+
+  .small__header {
+    i {
+      color: $mainGreen;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+  }
+}
+@media screen and (min-width: 601px) {
+  .navbar {
+    .small__header {
+      display: none;
+    }
+  }
+}

@@ -1,6 +1,16 @@
-.crew__product.row {
+.hero__pages.row {
   gap: 20px;
 }
-.crew__product.row .col {
+.hero__pages.row .col {
   flex: 1 250px;
+}
+
+.get__products.row {
+  gap: 20px;
+}
+.get__products.row .col {
+  flex: 1 250px;
+}
+.hide{
+  display: none;
 }

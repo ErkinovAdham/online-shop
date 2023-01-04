@@ -1,18 +1,26 @@
 import "./style";
 import { SignUp } from "./signUp";
-import { signUp, signIn, products } from "../api/index";
+import { signUp, signIn, products, getCategories } from "../api/index";
 import { SignIn } from "./signIn";
-import {displayProducts} from "./home"
+import {displayProducts, displayCategore, loadToken} from "./home"
+import { displayUsers, handleInitializeUsers } from "./all-users";
 document.addEventListener("DOMContentLoaded", async (e) => {
   const page = location.pathname;
   if (page === "/index.html" || page === "/") {
     products()
     .then(({data}) => {
-      console.log(data);
-      displayProducts(data.data)
+      console.log(data.data);
+      displayProducts(data.data);
     })
     
+    getCategories().then(({data}) => {
+      console.log(data);
+      displayCategore(data.payload)
+    })
+  
+    
   }
+
   if (page === "/sign-up.html" || page === "/sign-up") {
     const signUpForm = document.querySelector(".form__signup");
     try {
@@ -93,8 +101,14 @@ document.addEventListener("DOMContentLoaded", async (e) => {
         });
       });    
   }
-  if (page === "/product.html" || page === "/product") {}
-
-
+ 
+  if (page === "/all-users.html" || page === "/all-users") {
+    getUsers().then(({ data }) => {
+      console.log(data);
+      displayUsers(data);
+      handleInitializeUsers();
+    });
+  }
+  loadToken();
 });
 

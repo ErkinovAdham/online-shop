@@ -10,10 +10,9 @@ const ApiForImg = Axios.create({
 });
 
 function getToken(config) {
-  const token = localStorage["themovieDB"]
-    ? JSON.parse(JSON.parse(localStorage["themovieDB"])).token
-    : "";
-  config.headers.Authorization = token ? `Bearer ${token}` : "";
+ config.headers.authorization = localStorage.getItem("token")
+? `Bearer ${localStorage.getItem("token")}`
+: "";
   return config;
 }
 

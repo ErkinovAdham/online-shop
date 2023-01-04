@@ -31,4 +31,8 @@ export function products() {
    let url = `products/public`;
    return axios.get(url)
 }
+export function getCategories() {
+    let url = `categories`;
+    return axios.get(url);
+  }
 
