@@ -1,24 +1,40 @@
 import "./style";
 import { SignUp } from "./signUp";
-import { signUp, signIn, products, getCategories } from "../api/index";
+import { 
+  signUp, 
+  signIn, 
+  products, 
+  getCategories, 
+  createNewProduct 
+} from "../api/index";
 import { SignIn } from "./signIn";
-import {displayProducts, displayCategore, loadToken} from "./home"
-import { displayUsers, handleInitializeUsers } from "./all-users";
+import { 
+  displayProducts,
+   displayCategore, 
+   loadToken 
+  } from "./home";
+import {
+  displayUsers, 
+  handleInitializeUsers 
+} from "./all-users";
+import {
+  CreateCategory,
+  displayCategoryEdit,
+  handleInitializeCategory,
+  CreateProduct,
+} from "./edit-product";
 document.addEventListener("DOMContentLoaded", async (e) => {
   const page = location.pathname;
   if (page === "/index.html" || page === "/") {
-    products()
-    .then(({data}) => {
+    products().then(({ data }) => {
       console.log(data.data);
       displayProducts(data.data);
-    })
-    
-    getCategories().then(({data}) => {
+    });
+
+    getCategories().then(({ data }) => {
       console.log(data);
-      displayCategore(data.payload)
-    })
-  
-    
+      displayCategore(data.payload);
+    });
   }
 
   if (page === "/sign-up.html" || page === "/sign-up") {
@@ -66,15 +82,15 @@ document.addEventListener("DOMContentLoaded", async (e) => {
   }
   if (page === "/sign-in.html" || page === "/sign-in") {
     const signInForm = document.querySelector(".signIn_form");
-      signInForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const formData = new SignIn(
-          signInForm.email.value,
-          signInForm.password.value
-        );
-  
-        console.log(formData);
-        signIn(formData)
+    signInForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const formData = new SignIn(
+        signInForm.email.value,
+        signInForm.password.value
+      );
+
+      console.log(formData);
+      signIn(formData)
         .then(({ data }) => {
           console.log(data);
           localStorage.token = data.token;
@@ -99,9 +115,9 @@ document.addEventListener("DOMContentLoaded", async (e) => {
             location.assign(err.path);
           }
         });
-      });    
+    });
   }
- 
+
   if (page === "/all-users.html" || page === "/all-users") {
     getUsers().then(({ data }) => {
       console.log(data);
@@ -109,6 +125,62 @@ document.addEventListener("DOMContentLoaded", async (e) => {
       handleInitializeUsers();
     });
   }
+  if (page === "/category.html" || page === "/category") {
+    getCategories().then(({ data }) => {
+      console.log(data);
+      displayCategoryEdit(data.payload);
+      handleInitializeCategory();
+    });
+    let formCate = document.querySelector(".addcate");
+    if (formCate) {
+      formCate.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const formData = new CreateCategory(formCate.name.value);
+
+        addCategore(formData).then((data) => {
+          console.log(data.data.payload.name);
+          let dataCate = document.querySelector(".category");
+          dataCate.innerHTML += `<div class="category__link" data-id="${data.data.payload._id}"> 
+          <p class="title__cate">${data.data.payload.name}</p> 
+           <div class="btn__category--wreapper">
+           <button class="edit__category">Edit</button>
+           <button class="delete__category">Delete</button>
+           </div>
+          </div>`;
+          handleInitializeCategory();
+        });
+        formCate.reset();
+      });
+    }
+    let genreWrepper = document.querySelector(".categore__products");
+    getCategories().then(({ data }) => {
+      console.log(data);
+      let genresTemplate = "";
+      data.payload.forEach((genre) => {
+        genresTemplate += `<li class="category__type">
+          <input name="categoryId" type="radio" id=${genre._id} value=${genre._id}  /> 
+          <label for="${genre._id}">${genre.name}</label></li>`;
+      });
+      genreWrepper.innerHTML = genresTemplate;
+    });
+    // const formProduct = document.querySelector(".create__products");
+    // const fileForm = document.querySelector(".new_book_img_form");
+    // formProduct.addEventListener("submit", (e) => {
+    //   e.preventDefault();
+    //   const formData = new CreateProduct(
+    //     formProduct.name.value,
+    //     formProduct.salePrice.value,
+    //     formProduct.quantity.value,
+    //     formProduct.price.value,
+    //     formProduct.description.value,
+    //     formProduct.categoryId.value
+    //   );
+      
+    //   console.log(formData);
+    //   createNewProduct(formData).then((data) => {
+    //     console.log(data);
+    //   });
+    // });
+  }
   loadToken();
 });
-

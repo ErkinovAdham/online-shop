@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Shop</title>
-</head>
-<body>
-       <!-- HEADER   START-->
-       <header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Shopping</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+  </head>
+  <body>
+      <!-- HEADER   START-->
+      <header>
         <nav>
           <div class="container">
             <div class="navbar">
@@ -141,49 +145,144 @@
   
       <!-- HEADER END   -->
   
-    <section class="sign__upp">
+    <section class="nav__smaller hide">
+      <div class="container">
+        <ul class="nav__menu">
+          <li class="nav__item">
+            <a href="#" class="nav__item--link">Bosh menu</a>
+          </li>
+          <li class="nav__item">
+            <a href="#" class="nav__item--link">Yetkazib berish</a>
+          </li>
+          <li class="nav__item">
+            <a href="#" class="nav__item--link">To'lov</a>
+          </li>
+          <li class="nav__item">
+            <a href="#" class="nav__item--link">Joy buyurtmasi</a>
+          </li>
+        </ul>
+        <ul class="connect">
+          <li class="nav__item">
+            <a href="#" class="nav__item--link">
+              <img src="../img/phone.png" alt="phone" />
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="#" class="nav__item--link" id="number__coll">
+              +998915911604
+            </a>
+          </li>
+          <li class="nav__item add__person hide">
+            <a class="nav__item--link"
+              ><img src="../img/phone.png" alt=""
+            /></a>
+          </li>
+          <li class="nav__item account__state">
+            <a
+              href="./sign-in.html"
+              class="nav__item--link sign__in"
+              id="account__login"
+              >Sign-in</a
+            >
+            <a
+              href="./sign-up.html"
+              class="nav__item--link sign__up"
+              id="account__login"
+              >Sign-up</a
+            >
+          </li>
+          <li class="nav__item">
+            <a href="#" class="nav__item--link"
+              ><img src="../img/shopping-cart.png" alt="cart"
+            /></a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+
+
+    <section>
         <div class="container">
-            
-        </div>
-        <div class="row ">
-            <div class="col">
-                <div class="sign__upimg">
-                   <!-- <img width="100%" src="./img/Mobile login (1).gif" alt="">   -->
+            <div class="row">
+                <div class="col category__type">
+                    <div class="category">
+          
+                    </div>
+                    <div class="add__category">
+                        <p>add</p>
+                        <form class="addcate"> 
+                          <input 
+                          placeholder="Name Category"
+                          type="text"
+                          name="name"
+                          id="name"
+                          /> 
+                          <button>Add</button>
+                          </form>
+                      </div>
                 </div>
-            </div>
-            <div class="col col__wrapper">
-                <h1 class="col__title">Sign up</h1>
-                    <p class="wrapper__tittle">Already have an account? <a href="#">Sign In</a></p>
-                <form class="form__signup">
-    
-                    <p class="input__location">
-                        <label for="name">Firstname</label>
-                        <input class="input__disgn" placeholder="Reader FirstName" type="text" name="name" id="name">
-                    </p>
-                    <p class="input__location">
-                        <label for="lastName">Lastname</label>
-                        <input class="input__disgn" placeholder="Reader LirstName" type="text" name="lastName" id="lastName">
-                    </p>
-                    <p class="input__location">
-                        <label for="email">Email</label>
-                        <input class="input__disgn" placeholder="Reader email"  type="email" name="email" id="email">
-                    </p>
-                    <p class="input__location">
-                        <label for="password">Password</label>
-                        <input class="input__disgn" placeholder="Password"  type="password" name="password" id="password">
-                    </p>
-                    <p class="input__location">
-                        <label for="phone">Phone</label>
-                        <input class="input__disgn" placeholder="Reader Phone"  type="tel" name="phone" id="phone">
-                    </p>
-                <button class="signup__btn" >Sign up</button>
-            
-                </form>
-            
+                <div class="col">
+                  
+                    <form class="create__products" name="create__products">
+
+                      <div>
+                        <label for="name">
+                          Name
+                          <input type="text" name="name" id="name">
+                        </label>
+  
+                      </div>
+                      <div>
+                        <label for="price">
+                          Price
+                          <input type="number" name="price" id="price">
+                        </label>
+                      </div>
+
+                      
+                      <div>
+                        <label for="salePrice">
+                          SalePrice
+                          <input type="number" name="salePrice" id="salePrice">
+                        </label>
+                      </div>
+                      
+                      <div>
+                        <label for="quantity">
+                          Quantity
+                          <input type="number" name="quantity" id="quantity">
+                        </label>
+                      </div>
+                      
+                      <div>
+                        <label for="discription">
+                          Discription
+                          <textarea name="description" id="description">
+                        </label>
+                      </div>
+
+                      
+
+                      <div class="category__wreapperss">
+
+
+
+                        
+                      </div>
+                      
+                      <div class="btn">
+                        <button type="submit">Create Product</button>
+                      </div>
+                    </form>
+                </div>
+
             </div>
         </div>
     </section>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.12.0/toastify.min.js"></script>
-        <script src="../js/app.js" type="module"></script>
-</body>
+    <script type="module" src="../js/app.js"></script>
+  </body>
 </html>

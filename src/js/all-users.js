@@ -14,8 +14,8 @@ export function displayUsers(data = []) {
               <div>${phone}</div>
               <h4>${email}</h4>
               <div class="btn">
-                  <button>add</button>
-                  <button class="btn__remove">O'chirish</button>
+              <button>add</button>
+              <button class="btn__remove">O'chirish</button>
               </div>
           </article>
         </div>` ;
