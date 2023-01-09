@@ -76,8 +76,39 @@ export function editCategory(id, text) {
   if (!id) {
     throw "please inser id parametr";
   }
-  let url = `categories/&{id}`;
+  let url = `categories/${id}`;
   return axios.put(url, {
     name: `${text}`,
   });
+}
+
+export function addCategory(query) {
+  if (!query) {
+    throw "Please insert query parametr";
+  }
+  let url = `categories/`;
+  return axios.post(url, {
+    name: `${query.name}`,
+  });
+}
+// 
+
+
+export function getAccount() {
+  let url = `auth/profile`;
+  return axios.get(url);
+}
+// export function getCart() {
+//   let url = `cart/`;
+//   return axios.get(url);
+// }
+
+export function getUserCart() {
+  let url = `cart/${localStorage.userId}`;
+  return axios.get(url);
+}
+
+export function createCart() {
+  let url = `cart/`;
+  return axios.post(url);
 }

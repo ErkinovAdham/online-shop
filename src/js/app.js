@@ -5,8 +5,11 @@ import {
   signIn, 
   products, 
   getCategories, 
-  createNewProduct 
-} from "../api/index";
+  createNewProduct ,
+  addCategory,
+  createCart,
+  getUserCart
+} from "../api";
 import { SignIn } from "./signIn";
 import { 
   displayProducts,
@@ -54,8 +57,13 @@ document.addEventListener("DOMContentLoaded", async (e) => {
           .then(({ data }) => {
             console.log(data);
             localStorage.token = data.token;
+            localStorage.userId = data.user._id;
             localStorage.user = JSON.stringify(data.user.role);
-            location.assign("/");
+            createCart().then(({data}) => {
+              console.log(data);
+              localStorage.cartId = data.payload._id
+              location.assign("/");
+            })
           })
           .catch((err) => {
             Toastify({
@@ -94,6 +102,7 @@ document.addEventListener("DOMContentLoaded", async (e) => {
         .then(({ data }) => {
           console.log(data);
           localStorage.token = data.token;
+          localStorage.userId = data.payload._id;
           localStorage.user = JSON.stringify(data.payload.role);
           location.assign("/");
         })
@@ -137,7 +146,7 @@ document.addEventListener("DOMContentLoaded", async (e) => {
         e.preventDefault();
         const formData = new CreateCategory(formCate.name.value);
 
-        addCategore(formData).then((data) => {
+        addCategory(formData).then((data) => {
           console.log(data.data.payload.name);
           let dataCate = document.querySelector(".category");
           dataCate.innerHTML += `<div class="category__link" data-id="${data.data.payload._id}"> 
@@ -163,24 +172,23 @@ document.addEventListener("DOMContentLoaded", async (e) => {
       });
       genreWrepper.innerHTML = genresTemplate;
     });
-    // const formProduct = document.querySelector(".create__products");
-    // const fileForm = document.querySelector(".new_book_img_form");
-    // formProduct.addEventListener("submit", (e) => {
-    //   e.preventDefault();
-    //   const formData = new CreateProduct(
-    //     formProduct.name.value,
-    //     formProduct.salePrice.value,
-    //     formProduct.quantity.value,
-    //     formProduct.price.value,
-    //     formProduct.description.value,
-    //     formProduct.categoryId.value
-    //   );
+    const formProduct = document.querySelector(".create__products");
+    formProduct.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const formData = new CreateProduct(
+        formProduct.name.value,
+        formProduct.price.value,
+        formProduct.salePrice.value,
+        formProduct.quantity.value,
+        formProduct.description.value,
+        formProduct.categoryId.value
+      );
       
-    //   console.log(formData);
-    //   createNewProduct(formData).then((data) => {
-    //     console.log(data);
-    //   });
-    // });
+      console.log(formData);
+      createNewProduct(formData).then(({data}) => {
+        console.log(data);
+      });
+    });
   }
   loadToken();
 });
