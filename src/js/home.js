@@ -1,4 +1,7 @@
 import configs from "../configs";
+import {
+  cartAdd
+} from "../api";
 export function displayProducts(data = []) {
   let result = "";
   const productDetails = document.querySelector(".get__products");
@@ -7,22 +10,29 @@ export function displayProducts(data = []) {
     const imgs = img ? img : configs.defaultImg + "400";
     result += `
 
-            <div class="col" data-id="${_id}>
-                <article class="card">
-                    <div class="card__header">
-                      <img class="card__img" width="100%" src="${imgs}" alt="img">
-                    </div>
-                    <div class="card__body">
-                      <div class="card__title">${name}</div>
-                      <div class="card__discriptiop">${description}</div>
-                      <div class="row">
-                      <div class="col card__salePrice">${salePrice}</div>
-                      <div class="card__salePrice">${quantity}</div>
-                      </div>
-                    </div>
-                 </article>
-
-            </div>`;
+    <div class="col">
+    <article class="card" data-id="${_id}">
+      <div class="card__header">
+        <div class="card__img">
+          <img width="100%" src="${imgs}" alt="product">
+        </div>
+      </div>
+      <div class="card__body">
+        <div class="card__title">${name}</div>
+        <div class="card__discription">${description.slice(0, 23)}</div>
+        <div class="card__count">
+          <div class="card__prise">
+            ${salePrice} ming
+          </div>
+          <div class="count__products">${quantity} k/n</div>
+        </div>
+        <div class="card__btn">
+          <button class="btns  save__cart">Savatga qo'shish</button>
+        </div>
+      </div>
+      
+    </article>
+  </div>`;
   });
   productDetails.innerHTML = result;
 }
@@ -50,4 +60,25 @@ export function loadToken() {
     auth__link.remove();
     img__wrapper.classList.remove("hide");
   }
+}
+
+
+export function initializeMEvent() {
+  const cardNodeList = document.querySelectorAll(".card");
+  cardNodeList.forEach((card) => {
+    card.addEventListener("click", (event) => {
+      const element = event.target;
+      const id = card?.dataset?.id;
+      if(!id)return;
+      let isMenuBtn = element
+        .closest(".save__cart")
+        ?.classList.contains("save__cart");
+    
+      if (isMenuBtn) {
+        cartAdd(localStorage.userId, id).then(({data}) => {
+          console.log(data);
+        })
+      }
+    });
+  });
 }

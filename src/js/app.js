@@ -14,7 +14,8 @@ import { SignIn } from "./signIn";
 import { 
   displayProducts,
    displayCategore, 
-   loadToken 
+   loadToken,
+   initializeMEvent,
   } from "./home";
 import {
   displayUsers, 
@@ -32,8 +33,8 @@ document.addEventListener("DOMContentLoaded", async (e) => {
     products().then(({ data }) => {
       console.log(data.data);
       displayProducts(data.data);
+      initializeMEvent()
     });
-
     getCategories().then(({ data }) => {
       console.log(data);
       displayCategore(data.payload);
@@ -189,6 +190,11 @@ document.addEventListener("DOMContentLoaded", async (e) => {
         console.log(data);
       });
     });
+  }
+  if (page === "/card.html" || page === "/card") {
+    getUserCart().then(({data}) => {
+      console.log(data);
+    })
   }
   loadToken();
 });

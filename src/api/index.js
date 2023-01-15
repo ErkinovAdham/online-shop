@@ -112,3 +112,14 @@ export function createCart() {
   let url = `cart/`;
   return axios.post(url);
 }
+export function cartAdd(userId, id) {
+  if (!id) {
+    throw "please inser id parametr";
+  }
+  let url = `cart/${userId}/add`;
+  return axios.post(url, {
+    product: `${id}`,
+        "qty": 1,
+        "total": 2000
+  });
+}
