@@ -1,4 +1,7 @@
 import "./style";
+import {
+  displaycard
+} from "./card";
 import { SignUp } from "./signUp";
 import { 
   signUp, 
@@ -162,7 +165,7 @@ document.addEventListener("DOMContentLoaded", async (e) => {
         formCate.reset();
       });
     }
-    let genreWrepper = document.querySelector(".categore__products");
+    let genreWrepper = document.querySelector(".categore__products");  
     getCategories().then(({ data }) => {
       console.log(data);
       let genresTemplate = "";
@@ -194,6 +197,7 @@ document.addEventListener("DOMContentLoaded", async (e) => {
   if (page === "/card.html" || page === "/card") {
     getUserCart().then(({data}) => {
       console.log(data);
+      displaycard(data.payload.items)
     })
   }
   loadToken();
