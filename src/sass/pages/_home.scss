@@ -1,3 +1,6 @@
+* {
+  font-family: 'Playfair Display', serif;
+}
 .hero__pages.row {
   gap: 20px;
 }
@@ -14,9 +17,37 @@
 .hide{
   display: none;
 }
-.hero__section {
-  background: #fff;
+.hero__row {
+  background: #564;
   justify-content: space-between;
+  border-radius: 2.5%;
+}
+.hero__col {
+ margin-top: 15rem;
+ margin-left: 2rem;
+}
+button {
+  border: none;
+  color: rgb(255, 255, 255);
+  background: rgb(72, 155, 4);
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #4caf96;
+  color: white;
+}
+p {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: medium;
+  color: aliceblue;
 }
 
 // .hero__section{
