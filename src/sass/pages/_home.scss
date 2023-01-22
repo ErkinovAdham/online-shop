@@ -18,7 +18,7 @@
   display: none;
 }
 .hero__row {
-  background: #564;
+  background: rgb(154, 154, 240);
   justify-content: space-between;
   border-radius: 2.5%;
 }
@@ -49,7 +49,11 @@ p {
   font-size: medium;
   color: aliceblue;
 }
-
+.cotegore__wrap {
+  display: flex;
+  flex-wrap: wrap;
+  cursor: pointer;
+}
 // .hero__section{
 //   position: absolute;
 // width: 994px;
