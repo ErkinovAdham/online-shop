@@ -10,23 +10,23 @@ export  function displaycard(data = []) {
   
       <div class="col">
       <article class="card" data-id="${_id}">
+      <div class="card__header">
+      <div class="card__img">
+      <img width="100%" src="${imgs}" alt="product">
+      </div>
+      </div>
+      <div class="card__body">
+      <div class="card__title">${name}</div>
+      <div class="card__discription">${description.slice(0, 23)}</div>
+      <div class="card__count">
+      <div class="card__prise">
+      ${salePrice} ming
+      </div>
+      <div class="count__products">${quantity} k/n</div>
       <div>${total} ${qty}</div>
-        <div class="card__header">
-          <div class="card__img">
-            <img width="100%" src="${imgs}" alt="product">
-          </div>
-        </div>
-        <div class="card__body">
-          <div class="card__title">${name}</div>
-          <div class="card__discription">${description.slice(0, 23)}</div>
-          <div class="card__count">
-            <div class="card__prise">
-              ${salePrice} ming
-            </div>
-            <div class="count__products">${quantity} k/n</div>
-          </div>
-          <div class="card__btn">
-            <button class="btns  save__cart">Savatga qo'shish</button>
+      </div>
+      <div class="card__btn">
+      <button class="btns  save__cart">Savatga qo'shish</button>
           </div>
         </div>
         
