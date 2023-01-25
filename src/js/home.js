@@ -1,7 +1,5 @@
 import configs from "../configs";
-import {
-  cartAdd
-} from "../api";
+import { cartAdd } from "../api";
 export function displayProducts(data = []) {
   let result = "";
   const productDetails = document.querySelector(".get__products");
@@ -42,12 +40,8 @@ export function displayCategore(data = []) {
   data.forEach((prudoct) => {
     let { _id, name } = prudoct;
     result += `
-
-            <div class="col" data-id="${_id}>
-                <article class="card">
+            <div class="gets__category" data-id="${_id}>
                   <div class="categorea__title">${name}</div>
-                 </article>
-
             </div>`;
   });
   productDetails.innerHTML = result;
@@ -62,22 +56,21 @@ export function loadToken() {
   }
 }
 
-
 export function initializeMEvent() {
   const cardNodeList = document.querySelectorAll(".card");
   cardNodeList.forEach((card) => {
     card.addEventListener("click", (event) => {
       const element = event.target;
       const id = card?.dataset?.id;
-      if(!id)return;
+      if (!id) return;
       let isMenuBtn = element
         .closest(".save__cart")
         ?.classList.contains("save__cart");
-    
+
       if (isMenuBtn) {
-        cartAdd(localStorage.userId, id).then(({data}) => {
+        cartAdd(localStorage.userId, id).then(({ data }) => {
           console.log(data);
-        })
+        });
       }
     });
   });
