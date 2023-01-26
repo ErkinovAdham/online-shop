@@ -123,3 +123,11 @@ export function cartAdd(userId, id) {
         "total": 2000
   });
 }
+
+export function deleteCart(id) {
+  if (!id) {
+    throw "please inser id parametr";
+  }
+  let url = `cart/${id}/empty`;
+  return axios.delete(url);
+}

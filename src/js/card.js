@@ -28,6 +28,7 @@ export  function displaycard(data = []) {
       <div class="card__btn">
       <button class="btns  save__cart">Savatga qo'shish</button>
           </div>
+          
         </div>
         
       </article>

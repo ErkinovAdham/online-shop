@@ -11,7 +11,8 @@ import {
   createNewProduct ,
   addCategory,
   createCart,
-  getUserCart
+  getUserCart,
+  deleteCart
 } from "../api";
 import { SignIn } from "./signIn";
 import { 
@@ -19,6 +20,7 @@ import {
    displayCategore, 
    loadToken,
    initializeMEvent,
+   initializeDeleteEvent
   } from "./home";
 import {
   displayUsers, 
@@ -198,6 +200,7 @@ document.addEventListener("DOMContentLoaded", async (e) => {
     getUserCart().then(({data}) => {
       console.log(data);
       displaycard(data.payload.items)
+      initializeDeleteEvent()
     })
   }
   loadToken();

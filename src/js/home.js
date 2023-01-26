@@ -1,5 +1,5 @@
 import configs from "../configs";
-import { cartAdd } from "../api";
+import { cartAdd, deleteCart } from "../api";
 export function displayProducts(data = []) {
   let result = "";
   const productDetails = document.querySelector(".get__products");
@@ -27,6 +27,7 @@ export function displayProducts(data = []) {
         <div class="card__btn">
           <button class="btns  save__cart">Savatga qo'shish</button>
         </div>
+      
       </div>
       
     </article>
@@ -74,4 +75,16 @@ export function initializeMEvent() {
       }
     });
   });
+}
+
+
+export function initializeDeleteEvent() {
+  const cardNodeList = document.querySelector(".card__btn2");
+  cardNodeList.addEventListener("click",() => {
+    deleteCart(localStorage.userId).then(({data}) => {
+      console.log(data);
+      const dalete = document.querySelector(".cart__title")
+      dalete.remove()
+    })
+  })
 }
