@@ -20,7 +20,8 @@ import {
    displayCategore, 
    loadToken,
    initializeMEvent,
-   initializeDeleteEvent
+   initializeDeleteEvent,
+   initializeCartEvent
   } from "./home";
 import {
   displayUsers, 
@@ -201,6 +202,7 @@ document.addEventListener("DOMContentLoaded", async (e) => {
       console.log(data);
       displaycard(data.payload.items)
       initializeDeleteEvent()
+      initializeCartEvent()
     })
   }
   loadToken();

@@ -1,5 +1,5 @@
 import configs from "../configs";
-import { cartAdd, deleteCart } from "../api";
+import { cartAdd, deleteCart, removeitemsProductCart } from "../api";
 export function displayProducts(data = []) {
   let result = "";
   const productDetails = document.querySelector(".get__products");
@@ -86,5 +86,39 @@ export function initializeDeleteEvent() {
       const dalete = document.querySelector(".cart__title")
       dalete.remove()
     })
+  })
+}
+
+export function initializeCartEvent(data) {
+  const moviesStatus =document.querySelector("card");
+  
+  moviesStatus.addEventListener("click", (event) => {
+    const id = event.target.closest(",card-item")?.dataset?.id;
+    let result = 1;
+    console.log(id, "bosilgan");
+    if (!id) return;
+    const isMenuBtn = event.target.closest(".remove-item")?.classList("added__producct");
+    console.log(isMenuBtn);
+    if (isMenuBtn) {
+      const itemid = data.filter((data) => {
+        return item.prudoct._id != id; 
+      }); 
+      const dataCart = itemid.map((data) => {
+        return{
+          product: `${data.product._id}`,
+          qty: `${data.qty}`,
+          qty: `${data.total}`,
+          qty: `${data._id}`,
+        };
+      });
+      daleteProductCard(localStorage.userId, dataCart ? dataCart : {}.then((data) => {
+        console.log(data);
+        event.target.parentElement.parentElement.remove();
+        const cartOverlay = document.querySelector(".cart-overlay"); 
+        const cartDOM = document.querySelector("cart");
+        cartOverlay.classList.remove("transparentBcg");
+        cartDOM.classList.remove("showCart");
+      }))
+    }
   })
 }
