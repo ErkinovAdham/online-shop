@@ -132,7 +132,7 @@ export function deleteCart(id) {
   return axios.delete(url);
 }
 
-export function removeitemsProductCart(id , items) {
+export function daleteProductCard(id , items) {
   let url = `cart/${id}/remove`;
   return axios.put(url, {
     id: `${id}`,

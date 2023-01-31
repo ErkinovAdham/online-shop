@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", async (e) => {
       console.log(data);
       displaycard(data.payload.items)
       initializeDeleteEvent()
-      initializeCartEvent()
+      initializeCartEvent(data.payload.items)
     })
   }
   loadToken();
