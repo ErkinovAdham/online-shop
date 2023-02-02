@@ -12,7 +12,8 @@ import {
   addCategory,
   createCart,
   getUserCart,
-  deleteCart
+  deleteCart,
+  getAllUserOrder,
 } from "../api";
 import { SignIn } from "./signIn";
 import { 
@@ -27,6 +28,11 @@ import {
   displayUsers, 
   handleInitializeUsers 
 } from "./all-users";
+import {
+  displayAllUserOrder, 
+  initializeOrderEvent, 
+  orderForms
+} from "./order";
 import {
   CreateCategory,
   displayCategoryEdit,
@@ -140,6 +146,17 @@ document.addEventListener("DOMContentLoaded", async (e) => {
       displayUsers(data);
       handleInitializeUsers();
     });
+  }
+
+  if (page === "/order.html" || page === "/order") {
+    getAllUserOrder().then(({ data }) => {
+      console.log(data);
+      displayAllUserOrder(data.data);
+      initializeOrderEvent();
+    });
+  }
+  if (page === "/cart-order.html" || page === "/cart-order") {
+    orderForms()
   }
   if (page === "/category.html" || page === "/category") {
     getCategories().then(({ data }) => {

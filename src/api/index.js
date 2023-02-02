@@ -139,3 +139,42 @@ export function daleteProductCard(id , items) {
     items: items
   });
 }
+
+export function postOrder(id, customer, items, total) {
+  let url = `orders/`;
+  return axios.post(url , {
+    cartId: `${id}`,
+    customer: customer,
+    items: items,
+    total: `${total}`
+  });
+}
+
+export function getAllUserOrder() {
+  let url = `orders`;
+  return axios.get(url);
+}
+
+export function deleteUserOrder(id) {
+  let url = `orders/${id}/delete`;
+  return axios.delete(url);
+}
+
+export function completedUserOrder(id) {
+  let url = `orders/${id}/change-status`;
+  return axios.put(url, {
+    status: "completed"
+  });
+}
+
+export function cancelUserOrder(id) {
+  let url = `orders/${id}/change-status`;
+  return axios.put(url, {
+    status: "canceled"
+  });
+}
+
+export function getProductId(id) {
+  let url = `products/${id}`;
+  return axios.get(url);
+}
