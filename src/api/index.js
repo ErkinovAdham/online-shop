@@ -44,6 +44,22 @@ export function getAccount() {
   return axios.get(url);
 }
 
+export function postFavority(userId, productId) {
+  let url = `favorites/`;
+  return axios.post(url, {
+    productId:`${productId}`,
+    userId: `${userId}`
+  });
+}
+
+export function deleteFavority(userId, productId) {
+  let url = `favorites/${productId}`;
+  return axios.delete(url, {
+    userId: `${userId}`
+  });
+}
+
+
 export function fetchProduct(id) {
   if (!id) {
     throw "please inser id parametr";

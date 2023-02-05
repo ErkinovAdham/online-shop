@@ -25,9 +25,6 @@ export  function displaycard(data = []) {
       <div class="count__products">${quantity} k/n</div>
       <div>${total} ${qty}</div>
       </div>
-      <div class="card__btn">
-      <button class="btns  save__cart">Savatga qo'shish</button>
-          </div>
           <div class="card__btn">
       <button class="delete__cart">delete</button>
           </div>

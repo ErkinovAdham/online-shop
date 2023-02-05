@@ -15,7 +15,9 @@ import {
   deleteCart,
   getAllUserOrder,
   getAccount,
-  getFavority
+  getFavority,
+  postFavority,
+  deleteFavority
 } from "../api";
 import { SignIn } from "./signIn";
 import { 
