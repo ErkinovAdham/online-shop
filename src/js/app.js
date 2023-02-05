@@ -14,6 +14,8 @@ import {
   getUserCart,
   deleteCart,
   getAllUserOrder,
+  getAccount,
+  getFavority
 } from "../api";
 import { SignIn } from "./signIn";
 import { 
@@ -22,7 +24,8 @@ import {
    loadToken,
    initializeMEvent,
    initializeDeleteEvent,
-   initializeCartEvent
+   initializeCartEvent,
+   displayAccount
   } from "./home";
 import {
   displayUsers, 
@@ -137,6 +140,16 @@ document.addEventListener("DOMContentLoaded", async (e) => {
             location.assign(err.path);
           }
         });
+    });
+  }
+
+  if (page === "/account.html" || page === "/account") {
+    getAccount().then(({ data }) => {
+      console.log(data);
+      displayAccount(data.payload);
+    });
+    getFavority(localStorage.userId).then(({ data }) => {
+      console.log(data);
     });
   }
 

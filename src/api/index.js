@@ -34,6 +34,16 @@ export function getCategories() {
   return axios.get(url);
 }
 
+export function getFavority(id) {
+  let url = `favorites/all/${id}`;
+  return axios.get(url);
+}
+
+export function getAccount() {
+  let url = `auth/profile`;
+  return axios.get(url);
+}
+
 export function fetchProduct(id) {
   if (!id) {
     throw "please inser id parametr";
@@ -48,6 +58,7 @@ export function deleteProduct(id) {
   let url = `products/&{id}/delete`;
   return axios.delete(url);
 }
+
 
 export function createNewProduct(quary) {
   if (!quary) {
@@ -94,10 +105,6 @@ export function addCategory(query) {
 // 
 
 
-export function getAccount() {
-  let url = `auth/profile`;
-  return axios.get(url);
-}
 // export function getCart() {
 //   let url = `cart/`;
 //   return axios.get(url);

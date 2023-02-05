@@ -1,5 +1,5 @@
 import configs from "../configs";
-import { cartAdd, deleteCart, daleteProductCard } from "../api";
+import { cartAdd, deleteCart, daleteProductCard, getAccount } from "../api";
 export function displayProducts(data = []) {
   let result = "";
   const productDetails = document.querySelector(".get__products");
@@ -88,6 +88,25 @@ export function initializeDeleteEvent() {
   });
 }
 
+export function displayAccount(data = []) {
+  let result = "";
+  const productMenuNode = document.querySelector(".account__wreapper");
+  const { _id, name, img, address, email, lastName, phone, createdAt } = data;
+  const imgs = img ? configs.baseImgURL + img : configs.defaultImg + "400";
+  result += `<div class="account" data-id="${_id}">
+      <div class="card__img">
+        <img width="20%" src="${imgs}" alt="product">
+      </div>
+       <h1 class="user__name">${name}</h1>
+       <p class="user__lastname">${lastName}</p>
+       <p class="user__lastname">${address}</p>
+       <p class="user__lastname">${email}</p>
+       <p class="user__lastname">${phone}</p>
+       <p class="user__lastname">${createdAt.slice(0, 10)}</p>
+       </div>`;
+  productMenuNode.innerHTML = result;
+}
+
 export function initializeCartEvent(data) {
   const moviesStatus = document.querySelectorAll(".card");
   moviesStatus.forEach((card) => {
@@ -114,12 +133,12 @@ export function initializeCartEvent(data) {
             _id: `${data._id}`,
           };
         });
-        daleteProductCard(
-          localStorage.userId,
-          dataCart ? dataCart : {}).then((data) => {
+        daleteProductCard(localStorage.userId, dataCart ? dataCart : {}).then(
+          (data) => {
             console.log(data);
-            card.parentElement.remove()
-          })
+            card.parentElement.remove();
+          }
+        );
       }
     });
   });
