@@ -201,3 +201,8 @@ export function getProductId(id) {
   let url = `products/${id}`;
   return axios.get(url);
 }
+
+export function costumerOrder(id) {
+  let url = `orders/customer/${id}`;
+  return axios.get(url);
+}

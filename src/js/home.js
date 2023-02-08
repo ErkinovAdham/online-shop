@@ -88,6 +88,31 @@ export function initializeDeleteEvent() {
   });
 }
 
+export function initializeCostumerEvent() {
+  const orders = document.querySelectorAll(".user__order");
+
+  orders.forEach((order) => {
+    order.addEventListener("click", (event) => {
+      const element = event.target;
+      const id = order?.dataset?.id;
+      let deleteOrder = element
+        .closest(".remove__order")
+        ?.classList.contains("remove__order");
+      if (deleteOrder) {
+        if (!id) return;
+        deleteUserOrder(id).then(({ data }) => {
+          console.log(data);
+          Toastify({
+            text: 'Remove order !!!',
+            duration: 3000,
+          }).showToast();
+          event.target.parentElement.remove();
+        });
+      }
+    });
+  });
+}
+
 export function displayAccount(data = []) {
   let result = "";
   const productMenuNode = document.querySelector(".account__wreapper");

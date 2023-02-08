@@ -17,7 +17,8 @@ import {
   getAccount,
   getFavority,
   postFavority,
-  deleteFavority
+  deleteFavority,
+  costumerOrder
 } from "../api";
 import { SignIn } from "./signIn";
 import { 
@@ -27,7 +28,8 @@ import {
    initializeMEvent,
    initializeDeleteEvent,
    initializeCartEvent,
-   displayAccount
+   displayAccount,
+   initializeCostumerEvent
   } from "./home";
 import {
   displayUsers, 
@@ -170,6 +172,15 @@ document.addEventListener("DOMContentLoaded", async (e) => {
       initializeOrderEvent();
     });
   }
+
+  if (page === "/order-details.html" || page === "/order-details") {
+    costumerOrder(localStorage.userId).then(({data})=>{
+      console.log(data);
+      displayCostumerOrder(data.payload);
+      initializeCostumerEvent()
+    })
+  }
+
   if (page === "/cart-order.html" || page === "/cart-order") {
     orderForms()
   }
