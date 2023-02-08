@@ -57,6 +57,17 @@ export function loadToken() {
   }
 }
 
+export function displayFav(data = []) {
+  let result = "";
+  const productMenuNode = document.querySelector(".gets__favority");
+  data.forEach((product) => {
+    const { img, ...docs } = product;
+    const imgs = img ? img : configs.defaultImg + "400";
+    result += cardTemplate({ ...docs, imgs });
+  });
+  productMenuNode.innerHTML = result;
+}
+
 export function initializeMEvent() {
   const cardNodeList = document.querySelectorAll(".card");
   cardNodeList.forEach((card) => {

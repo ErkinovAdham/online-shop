@@ -29,7 +29,8 @@ import {
    initializeDeleteEvent,
    initializeCartEvent,
    displayAccount,
-   initializeCostumerEvent
+   initializeCostumerEvent,
+   displayFav
   } from "./home";
 import {
   displayUsers, 
