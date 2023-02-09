@@ -87,22 +87,7 @@ document.addEventListener("DOMContentLoaded", async (e) => {
             })
           })
           .catch((err) => {
-            Toastify({
-              text: err.msg,
-              duration: 3000,
-              newWindow: true,
-              close: true,
-              gravity: "top",
-              position: "right",
-              stopOnFocus: true,
-              style: {
-                background: "linear-gradient(to right, red, red)",
-              },
-              onClick: function () {},
-            }).showToast();
-            if (err?.path) {
-              location.assign(err.path);
-            }
+           
           });
       });
     } catch (err) {
@@ -128,22 +113,7 @@ document.addEventListener("DOMContentLoaded", async (e) => {
           location.assign("/");
         })
         .catch((err) => {
-          Toastify({
-            text: err.msg,
-            duration: 3000,
-            newWindow: true,
-            close: true,
-            gravity: "top",
-            position: "right",
-            stopOnFocus: true,
-            style: {
-              background: "linear-gradient(to right, red, red)",
-            },
-            onClick: function () {},
-          }).showToast();
-          if (err?.path) {
-            location.assign(err.path);
-          }
+         
         });
     });
   }

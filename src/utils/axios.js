@@ -1,3 +1,5 @@
+import Toastify from 'toastify-js';
+import "toastify-js/src/toastify.css"
 import Axios from "axios";
 import config from "../configs";
 const { baseURL, baseImgUrl } = config;
@@ -28,6 +30,41 @@ axios.interceptors.request.use(
 ApiForImg.interceptors.request.use(
   (config) => getToken(config),
   (error) => {
+    return Promise.reject(error);
+  }
+);
+
+axios.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    if (error.response.status === 404) {
+      Toastify({
+        text: error.response.data.msg,
+        duration: 3000,
+      }).showToast();
+    }
+    else if (error.response.status === 401){
+      Toastify({
+        text: error.response.data.msg,
+        duration: 3000,
+      }).showToast();
+
+      location.assign('/sign-in.html')
+    }
+    else if (error.response.status === 400){
+      Toastify({
+        text: error.response.data.msg,
+        duration: 3000,
+      }).showToast();
+    }
+    else {
+      Toastify({
+        text: error.response.data.msg,
+        duration: 3000,
+      }).showToast();
+    }
     return Promise.reject(error);
   }
 );
