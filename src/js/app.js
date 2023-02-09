@@ -33,8 +33,8 @@ import {
    displayFav
   } from "./home";
 import {
-  displayUsers, 
-  handleInitializeUsers 
+  displayUsers, handleIntializeUsers, 
+  
 } from "./all-users";
 import {
   displayAllUserOrder, 
@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", async (e) => {
     getUsers().then(({ data }) => {
       console.log(data);
       displayUsers(data);
-      handleInitializeUsers();
+      handleIntializeUsers();
     });
   }
 
