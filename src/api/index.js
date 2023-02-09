@@ -183,6 +183,14 @@ export function deleteUserOrder(id) {
   return axios.delete(url);
 }
 
+export function deleteUser(id) {
+  if (!id) {
+    throw "Please insert id parametr";
+  }
+  let url = `users/${id}/delete`;
+  return axios.get(url);
+}
+
 export function completedUserOrder(id) {
   let url = `orders/${id}/change-status`;
   return axios.put(url, {
